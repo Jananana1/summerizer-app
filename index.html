@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Excel Results Summarizer</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1D6F42">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Summarizer">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<script src="xlsx.full.min.js" defer></script>
+<script src="jszip.min.js" defer></script>
+<script src="jspdf.umd.min.js" defer></script>
+<script src="jspdf.plugin.autotable.min.js" defer></script>
+<script src="template.js" defer></script>
+<script src="rep-core.js" defer></script>
+<script src="app.js" defer></script>
+<script src="reports.js" defer></script>
+<script src="install.js" defer></script>
+</head>
+<body>
+<main>
+<div class="top"><h1>Results Summarizer</h1></div>
+<p class="sub">Upload an Excel or CSV file to generate individual client reports.</p>
+<div id="drop" tabindex="0" role="button" aria-label="Upload Excel or CSV file"><b>Choose a file</b> or drag it here (.xlsx, .xls, .csv) (max: 30 MB)</div>
+<input id="file" type="file" accept=".xlsx,.xls,.csv" class="hide">
+<div id="report" class="hide"></div>
+<section id="rep" class="hide">
+<h2>Individual reports</h2>
+<p id="rinfo"></p>
+<div class="grid">
+<label>From client<select id="rfrom"></select></label>
+<label>To client<select id="rto"></select></label>
+<label>Save as<select id="rfmt"><option value="docx">Word (.docx)</option><option value="pdf">PDF</option></select></label>
+<label>Delivery<select id="rzip"><option value="files">Separate files</option><option value="zip">One ZIP</option></select></label>
+<label>Report date<input id="rdate" type="date"></label>
+<label>Subject test title (replaces Xs)<input id="rsubj" type="text" maxlength="80" placeholder="optional"></label>
+<label>Test name (replaces XXXXX)<input id="rtest" type="text" maxlength="80" placeholder="optional"></label>
+<label>Date conducted (replaces XXX)<input id="rcond" type="text" maxlength="40" placeholder="optional"></label>
+</div>
+<div class="row"><button class="primary" id="rgen">Generate reports</button><span id="rmsg"></span></div>
+</section>
+<div id="ios" class="hide" role="dialog" aria-label="Install instructions">
+<p id="iosTxt"></p><button id="iosClose" type="button">Got it</button></div>
+</main>
+</body>
+</html>
